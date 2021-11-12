@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
-import {firebase} from '../service/firebase'
+import  firebase from 'firebase/compat/app'
+import 'firebase/compat/auth'
 
 import ilustrationImg from '../assets/images/illustration.svg'
 import  logoImg from '../assets/images/logo.svg'
@@ -10,7 +11,7 @@ import '../styles/auth.css'
 
 export function Home(){
     const navigate = useNavigate();
-
+    
     function handleCreateRoom(){
         navigate('/rooms/')
     }

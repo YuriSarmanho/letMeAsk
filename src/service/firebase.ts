@@ -1,20 +1,19 @@
-import firebase from 'firebase/app';
+import { initializeApp } from 'firebase/app';
 
-import 'firebase/auth';
-import 'firebase/database';
+import { getAuth } from 'firebase/auth';
+import { getDatabase, ref } from 'firebase/database'
 
-const firebaseConfig = {
-    apiKey: "AIzaSyAq2g2YydBzXe13VIkjxRTPBCK-N2ZOtL4",
-    authDomain: "letmeask-e1ed8.firebaseapp.com",
-    databaseURL: "https://letmeask-e1ed8-default-rtdb.firebaseio.com",
-    projectId: "letmeask-e1ed8",
-    storageBucket: "letmeask-e1ed8.appspot.com",
-    messagingSenderId: "573290355370",
-    appId: "1:573290355370:web:b063794bc6eac3c4dc8ed3"
-};
+const app = initializeApp({
+    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+    authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+    databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
+    projectId:  process.env.REACT_APP_FIREBASE_PROJECT_ID,
+    storageBucket:  process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId:  process.env.REACT_APP_FIREBASE_MESSANGING_SENDER_ID,
+    appId: process.env.REACT_APP_FIREBASE_APP_ID
+})
 
-const app = firebase.initializeApp(firebaseConfig)
+const auth = getAuth(app);
+const database = getDatabase(app)
 
-
-
-export {firebase}
+export default {app, auth, database}
